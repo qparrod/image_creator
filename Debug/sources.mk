@@ -23,7 +23,13 @@ C_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+<<<<<<< HEAD
 . \
 src/tiff \
 src \
+=======
+src \
+. \
+lib \
+>>>>>>> d78d64ac8b8338f8ac2b303f30856f9276217fd8
 

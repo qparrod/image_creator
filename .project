@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>img</name>
+=======
+	<name>image</name>
+>>>>>>> d78d64ac8b8338f8ac2b303f30856f9276217fd8
 	<comment></comment>
 	<projects>
 	</projects>
@@ -31,7 +35,11 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
+<<<<<<< HEAD
 					<value>${workspace_loc:/img/Debug}</value>
+=======
+					<value>${workspace_loc:/image/Debug}</value>
+>>>>>>> d78d64ac8b8338f8ac2b303f30856f9276217fd8
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -79,4 +87,29 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+<<<<<<< HEAD
+=======
+	<linkedResources>
+		<link>
+			<name>img</name>
+			<type>2</type>
+			<location>/home/quentin/Documents/PROJET_IMAGE/img</location>
+		</link>
+		<link>
+			<name>lib</name>
+			<type>2</type>
+			<location>/home/quentin/Documents/PROJET_IMAGE/lib</location>
+		</link>
+		<link>
+			<name>main.cpp</name>
+			<type>1</type>
+			<location>/home/quentin/Documents/PROJET_IMAGE/main.cpp</location>
+		</link>
+		<link>
+			<name>src</name>
+			<type>2</type>
+			<location>/home/quentin/Documents/PROJET_IMAGE/src</location>
+		</link>
+	</linkedResources>
+>>>>>>> d78d64ac8b8338f8ac2b303f30856f9276217fd8
 </projectDescription>
