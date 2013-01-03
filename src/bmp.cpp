@@ -1,5 +1,4 @@
-#include "bmp.h"
-#include <vector>
+#include "../lib/bmp.h"
 
 #define print(value) std::cout<<value<<std::endl;
 
@@ -9,9 +8,19 @@ Bmp::Bmp(){
 }
 
 Bmp::~Bmp(){
+	delete[] header;
+	delete[] img;
 }
 
-bool Bmp::loadBmp(string filename){
+HeaderBmp* Bmp::getHeader(){
+	return header;
+}
+
+ImageBmp* Bmp::getImage(){
+	return img;
+}
+
+bool Bmp::load(string filename){
   print("loading picture...");
   ifstream file ( filename.c_str(), ios::in | ios::binary );
   if (file.is_open()){
@@ -32,19 +41,24 @@ bool Bmp::loadBmp(string filename){
     file.read((char*)(&header->colorsInColorTable),4);
     file.read((char*)(&header->importantColorCount),4);
 
-    //header->audit(); //control header
+    header->audit(); //control header
     print("\tImage caracteristics : ");
-    cout<<"\t\tsize : " <<header->width <<"x"<< header->height<<endl;
+    cout<<"\t\tsize : "<<header->width <<"x"<< header->height<<endl;
     cout<<"\t\tbpp : "<<header->bitPerPixel<<endl;
 
     //IMAGE BMP
     img = new ImageBmp(header->width,header->height);
     file.seekg(header->fileOffset);//begin of image
-    for(int i=0;i<header->height;i++){
-        for(int j=0;j<header->width;j++){
-            img->getLine(i)->getPixel(j)->setBlue(file.get());
-            img->getLine(i)->getPixel(j)->setGreen(file.get());
-            img->getLine(i)->getPixel(j)->setRed(file.get());
+    int red, green, blue;
+    for(unsigned int i=0;i<header->height;i++){
+        for(unsigned int j=0;j<header->width;j++){
+        	blue = file.get();
+        	green = file.get();
+        	red = file.get();
+            img->getLine(i)->getPixel(j)->setBlue(blue);
+            img->getLine(i)->getPixel(j)->setGreen(green);
+            img->getLine(i)->getPixel(j)->setRed(red);
+            img->getLine(i)->getPixel(j)->setRGB(red,green,blue);
         }
     }
     print("image loaded!\n");
@@ -56,12 +70,17 @@ bool Bmp::loadBmp(string filename){
   return true;
 }
 
-void Bmp::createBmp(int width,int height){
+void Bmp::create(int width,int height){
     header->setHeader(width,height);
     img = new ImageBmp(width,height);
+    for (unsigned int i=0;i<header->width;i++){
+    	print(img->getLine(0)->getPixel(i)->getRed());
+    	print(img->getLine(0)->getPixel(i)->getGreen());
+    	print(img->getLine(0)->getPixel(i)->getBlue());
+    }
 }
 
-bool Bmp::saveBmp(string filename){
+bool Bmp::save(string filename){
   print("saving picture...");
   ofstream file (filename.c_str(), ios::out | ios::binary );
   if (file.is_open()){
@@ -84,8 +103,8 @@ bool Bmp::saveBmp(string filename){
 
     //WRITING IMAGE
     char rgb[3];
-    for(int i=0;i<header->height;i++){
-        for(int j=0;j<header->width;j++){
+    for(unsigned int i=0;i<header->height;i++){
+        for(unsigned int j=0;j<header->width;j++){
             rgb[0] = (char) img->getLine(i)->getPixel(j)->getBlue();
             rgb[1] = (char) img->getLine(i)->getPixel(j)->getGreen();
             rgb[2] = (char) img->getLine(i)->getPixel(j)->getRed();
@@ -95,7 +114,7 @@ bool Bmp::saveBmp(string filename){
 
     file.close();
   }else{
-    print("Warning, unable to open the file");
+    print("Warning, unable to save the file");
     return false;
   }
   print("image saved!\n");

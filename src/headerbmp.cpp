@@ -1,6 +1,6 @@
-#include "headerbmp.h"
+#include "../lib/headerbmp.h"
 #include <iostream>
-#include <stdio.h>h"
+#include <stdio.h>
 
 #define print(value) cout<<value<<endl;
 
@@ -14,8 +14,8 @@ HeaderBmp::HeaderBmp(){
   planes              = 1;
   bitPerPixel         = 8; //MORE FLEXIBLE!
   compression         = 0;
-  xPixelsPerMeter     = 2835;
-  yPixelsPerMeter     = 2835;
+  xPixelsPerMeter     = 0;
+  yPixelsPerMeter     = 0;
   colorsInColorTable  = 0;
   importantColorCount = 0;
 }

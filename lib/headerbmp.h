@@ -1,7 +1,6 @@
 #ifndef HEADERBMP_H
 #define HEADERBMP_H
 
-
 class HeaderBmp{
 public:
     HeaderBmp();

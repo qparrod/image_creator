@@ -1,7 +1,7 @@
 #ifndef IMAGEBMP_H
 #define IMAGEBMP_H
 
-#include "Line.h"
+#include "../lib/line.h"
 
 class ImageBmp
 {

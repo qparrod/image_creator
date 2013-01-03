@@ -1,7 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include "Pixel.h"
+#include "../lib/pixel.h"
 
 class Line
 {

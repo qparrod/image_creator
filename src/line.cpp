@@ -1,15 +1,13 @@
-#include "line.h"
+#include "../lib/line.h"
 
 Line::Line(int width)
 {
     list = new Pixel*[width];
-    for(int i=0;i<width;i++){
+    for(int i=0;i<width;i++)
         list[i] = new Pixel();
-    }
 }
 
-Line::~Line()
-{
+Line::~Line(){
     //dtor
 }
 

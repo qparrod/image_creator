@@ -1,0 +1,10 @@
+#git
+
+git pull http://github.com/qparrod/projet_image
+
+
+git status
+git commit -a
+git add .
+
+git push http://github.com/qparrod/projet_image

@@ -1,29 +1,28 @@
 #ifndef BMP_H
 #define BMP_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "HeaderBmp.h"
-#include "ImageBmp.h"
+#include "../lib/headerbmp.h"
+#include "../lib/imagebmp.h"
+#include "../lib/Image.h"
 
 using namespace std;
 
-class Bmp
+class Bmp : public Image
 {
 public:
   Bmp();
   virtual ~Bmp();
-  bool loadBmp(string filename);
-  bool saveBmp(string filename);
-  void createBmp(int width,int height);
+  HeaderBmp* getHeader();
+  ImageBmp* getImage();
+  bool load(string filename);
+  bool save(string filename);
+  void create(int width,int height);
 private:
-  HeaderBmp *header;
-  ImageBmp *img;
+  HeaderBmp* header;
+  ImageBmp* img;
 };
-
-
 
 #endif // BMP_H
